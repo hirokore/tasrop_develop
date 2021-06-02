@@ -1,5 +1,14 @@
 <h1>Blogs</h1>
 
+<% if current_user.try(:admin?) %>
+  <h3>あなたは管理者だ！</h3>  
+<% elsif current_user.try(:vip?) %>
+  <h3>VIPさまの登場だ！</h3>  
+<% else %>
+  <h3>安心の一般ユーザーおーけーい</h3>
+<% end %>
+  
+
 <table>
   <thead>
     <tr>

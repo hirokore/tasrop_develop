@@ -1,0 +1,10 @@
+<h1>ユーザー一覧じゃい</h1>
+<br>
+<table>
+  <th>メルアド</th>
+  <% @users.each do | user |%>
+    <tr>
+      <td><%= user.email %></td>
+    </tr>
+  <% end %>
+</table>
