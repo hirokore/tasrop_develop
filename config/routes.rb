@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'oauth_test/index'
   root  "blogs#index"
   devise_for :users, controllers: {
     registrations: 'users/registrations'
