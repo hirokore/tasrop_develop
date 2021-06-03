@@ -10,7 +10,7 @@ class User < ApplicationRecord
   def set_default_role
     self.role ||= :user
   end
-  
+  # ゲストログイン用メソッド
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -23,5 +23,17 @@ class User < ApplicationRecord
   def self.create_unique_string
     SecureRandom.uuid
   end
-  
+  # 外部から取得したユーザー情報を元に、このアプリで使用するユーザーを作成する
+  def self.find_for_google(auth)
+    user = User.find_by(email: auth.info.email)
+    unless user
+      user = User.new(email: auth.info.email,
+                      provider: auth.provider,
+                      uid:      auth.uid,
+                      password: Devise.friendly_token[0, 20],
+      )
+    end
+    user.save
+    user
+  end
 end
