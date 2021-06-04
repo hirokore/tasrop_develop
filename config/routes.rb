@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index]
   mount LetterOpenerWeb::Engine, at: "/mail" if Rails.env.development?
   resources :blogs
+  resources :relationships, only: [:create, :destroy]
 end
