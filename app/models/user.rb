@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackable,:omniauthable, omniauth_providers: %i(google)
+         :recoverable, :rememberable, :validatable, :trackable,:omniauthable, omniauth_providers: %i(google facebook)
 
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
@@ -24,7 +24,7 @@ class User < ApplicationRecord
     SecureRandom.uuid
   end
   # 外部から取得したユーザー情報を元に、このアプリで使用するユーザーを作成する
-  def self.find_for_google(auth)
+  def self.find_for_oauth(auth)
     user = User.find_by(email: auth.info.email)
     unless user
       user = User.new(email: auth.info.email,
