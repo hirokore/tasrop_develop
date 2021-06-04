@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+  get 'relationships/destroy'
   root  "blogs#index"
   devise_for :users, controllers: {
     registrations: 'users/registrations',
