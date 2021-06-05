@@ -3,11 +3,13 @@
 <table>
   <th>メルアド</th>
   <% @users.each do | user |%>
-    <tr>
-      <td><%= user.email if not user.admin? %></td>
-      <td>
-        <%= render 'follow_form', user: user %>
-      </td>
-    </tr>
+    <% unless user.admin? || user == current_user%>
+      <tr>
+        <td><%= user.email%></td>
+        <td>
+          <%= render 'follow_form', user: user %>
+        </td>
+      </tr>
+      <% end %>
   <% end %>
 </table>
