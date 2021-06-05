@@ -1,5 +1,7 @@
 {
   "name": "develop_tasrop_app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
 }
