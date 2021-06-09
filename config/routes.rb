@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  get 'tops/index'
+  get 'tops/contact'
+  get 'tops/tutorial'
   get 'relationships/create'
   get 'relationships/destroy'
-  root  "blogs#index"
+  root  'tops#index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     omniauth_callbacks: "users/omniauth_callbacks"
