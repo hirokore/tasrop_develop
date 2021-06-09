@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/mail" if Rails.env.development?
   resources :blogs
   resources :relationships, only: [:create, :destroy]
+  resources :conversations do
+    resources :messages
+  end
 end
