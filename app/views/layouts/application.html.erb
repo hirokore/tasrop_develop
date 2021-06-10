@@ -13,14 +13,14 @@
       <%= link_to "ブログ投稿", blogs_path %>
       <%= link_to "マイページ", current_user %>
       <%= link_to "ユーザ一覧", users_path %>
-      <%= link_to "ご利用ガイド", tops_tutorial_path %>
-      <%= link_to "お問い合わせ", tops_contact_path %>
+      <%= link_to "ご利用ガイド", tutorial_tops_path %>
+      <%= link_to "お問い合わせ", new_top_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "新規登録", new_user_registration_path %>
       <%= link_to "ログイン", new_user_session_path %>
-      <%= link_to "ご利用ガイド", tops_tutorial_path %>
-      <%= link_to "お問い合わせ", tops_contact_path %>
+      <%= link_to "ご利用ガイド", tutorial_tops_path %>
+      <%= link_to "お問い合わせ", new_top_path %>
     <% end %>
     
     <% if notice %>

@@ -1,0 +1,23 @@
+<h1>問い合わせ</h1>
+
+<%= form_with(model: @contact ,local: true, url: tops_path) do |form|  %>
+    <% if @contact.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= @contact.errors.count %>件のエラーがあります。</h2>
+            <ul>
+            <% @contact.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %><br>
+    <%= form.label :email %><br>
+    <%= form.text_field :email %><br>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %><br>
+    <%= form.label :content %><br>
+    <%= form.text_field :content %><br><br>
+    <%= form.submit value="送信"%>
+<% end %>

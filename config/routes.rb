@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  get 'tops/index'
-  get 'tops/contact'
-  get 'tops/tutorial'
+  root  'tops#index'
   get 'relationships/create'
   get 'relationships/destroy'
-  root  'tops#index'
+  resources :tops do
+    collection do
+      get 'tutorial'
+    end
+  end
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     omniauth_callbacks: "users/omniauth_callbacks"
