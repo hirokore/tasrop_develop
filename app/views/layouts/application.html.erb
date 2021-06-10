@@ -22,7 +22,13 @@
       <%= link_to "ご利用ガイド", tutorial_tops_path %>
       <%= link_to "お問い合わせ", new_top_path %>
     <% end %>
-    
+
+    <% if user_signed_in? %>
+      <div class="col-2">
+        <%= render'layouts/sidebar' %>
+      </div>
+    <% end %>
+
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>
     <% end %>
