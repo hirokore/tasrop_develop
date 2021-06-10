@@ -8,6 +8,7 @@ class User < ApplicationRecord
   # デバイス関連
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable,:omniauthable, omniauth_providers: %i(google facebook)
+        #   twitter
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
   def set_default_role

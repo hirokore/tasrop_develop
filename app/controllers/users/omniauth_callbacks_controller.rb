@@ -11,6 +11,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google
     callback_from :google
   end
+  
+  # def twitter
+  #   callback_from :twitter
+  # end
 
   private
   def callback_from(provider)

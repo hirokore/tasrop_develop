@@ -310,6 +310,8 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
   
   # googleで取得したOauth認証に必要な値（クライアントIDとシークレット）を読み込む
-  config.omniauth :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'], name: :google
-  config.omniauth :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_SECRET_KEY'], name: :facebook
+  config.omniauth :google_oauth2, ENV['GOOGLE_API_ID'], ENV['GOOGLE_API_SECRET'], name: :google
+  config.omniauth :facebook, ENV['FACEBOOK_API_ID'], ENV['FACEBOOK_API_SECRET'], name: :facebook
+  # config.omniauth :twitter, ENV['TWITTER_API_ID'], ENV['TWITTER_API_SECRET'], name: :twitter
+
 end
