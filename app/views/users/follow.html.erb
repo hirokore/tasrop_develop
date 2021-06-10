@@ -1,0 +1,11 @@
+<br>
+<table>
+  <tr>
+    <th style=" text-align: left;">フォロー</th>
+  </tr>
+  <% @user.following.each do |follow| %>
+    <tr>
+      <td><%= follow.email %></td>
+    </tr>
+  <% end %>
+</table>

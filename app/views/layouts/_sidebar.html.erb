@@ -5,8 +5,8 @@
       <%= sidebar_custom('マイタスク', blogs_path) %>
       <%= sidebar_custom('マイページ', current_user) %>
       <%= sidebar_custom('カスタマイズ', tutorial_tops_path) %>
-      <%= sidebar_custom('フォロー', tutorial_tops_path) %>
-      <%= sidebar_custom('フォロワー', tutorial_tops_path) %>
+      <%= sidebar_custom('フォロー', follow_users_path(current_user)) %>
+      <%= sidebar_custom('フォロワー', followed_users_path(current_user)) %>
       <%= sidebar_custom('ユーザー検索', tutorial_tops_path) %>
       <%#= sidebar_custom('メンター機能', current_user) %>
       <%= sidebar_custom('DM', tutorial_tops_path) %>

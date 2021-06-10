@@ -1,0 +1,12 @@
+
+<br>
+<table>
+  <tr>
+    <th style=" text-align: left;">フォロワー</th>
+  </tr>
+  <% @user.followers.each do |followed| %>
+    <tr>
+      <td><%= followed.email %></td>
+    </tr>
+  <% end %>
+</table>
