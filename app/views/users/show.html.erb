@@ -1,3 +1,10 @@
 <h1>マイページ</h1>
 
-<%= link_to @user.name, edit_user_registration_path %>
+<p>
+  <% if @user.image.url  %>
+    <p>
+      <%= image_tag @user.image.url %>
+  <% end %>
+      <%= link_to @user.name, edit_user_registration_path %>
+    </p>
+</p>
