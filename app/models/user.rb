@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # 写真利用機能
+  mount_uploader :image, ImageUploader
+
   # 繋がり機能
   has_many :active_relationships, foreign_key: 'follower_id', class_name: 'Relationship', dependent: :destroy
   has_many :passive_relationships, foreign_key: 'followed_id', class_name: 'Relationship', dependent: :destroy
@@ -16,8 +19,11 @@ class User < ApplicationRecord
   end
   # ゲストログイン用メソッド
   def self.guest
-    find_or_create_by!(email: 'guest@example.com', name: 'ゲストユーザー', name_tag: name_tag, uid: create_unique_string) do |user|
+    find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
+      user.name = 'ゲストユーザー'
+      user.name_tag = name_tag
+      user.uid = create_unique_string
       user.vip!
       # 通常ログインができるように
     end
