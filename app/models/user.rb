@@ -16,11 +16,10 @@ class User < ApplicationRecord
   end
   # ゲストログイン用メソッド
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
+    find_or_create_by!(email: 'guest@example.com', name: 'ゲストユーザー', name_tag: name_tag, uid: create_unique_string) do |user|
       user.password = SecureRandom.urlsafe_base64
       user.vip!
       # 通常ログインができるように
-      user.uid = create_unique_string
     end
   end
   # 通常ログインができるように
@@ -32,6 +31,8 @@ class User < ApplicationRecord
     user = User.find_by(email: auth.info.email)
     unless user
       user = User.new(email: auth.info.email,
+                      name: auth.info.name,
+                      name_tag: name_tag,
                       provider: auth.provider,
                       uid:      auth.uid,
                       password: Devise.friendly_token[0, 20],
@@ -52,4 +53,9 @@ class User < ApplicationRecord
   def unfollow!(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
+
+  def self.name_tag
+    rand(1..9999)
+  end
+
 end
