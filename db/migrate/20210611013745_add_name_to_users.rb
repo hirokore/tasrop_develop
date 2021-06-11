@@ -5,6 +5,6 @@ class AddNameToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :notice, :boolean, null: false, default: false
     add_column :users, :notice_time, :time, default: "20:00"
     add_column :users, :name_tag, :integer, null: false
-    add_column :users, :picture, :string
+    add_column :users, :image, :string
   end
 end
