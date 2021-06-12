@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show follow followed destroy]
   before_action :move_to_signed_in
   
+  def find
+    @users  = User.all
+  end
+  
   def index
     @users = User.all
   end
