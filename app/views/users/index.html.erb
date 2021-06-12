@@ -4,6 +4,7 @@
     <th>表示名</th>
     <th>メルアド</th>
     <th>管理者権限</th>
+    <th></th>
     <% @users.each do | user |%>
       <% unless user == current_user%>
         <tr>
@@ -13,7 +14,10 @@
             <td><%= link_to "解除", edit_user_path(user,role: "user") %></td>
           <% elsif user.user? %>
             <td><%= link_to "付与", edit_user_path(user,role: "admin") %></td>
+          <% else %>
+            <td></td>
           <% end %>
+          <td><%= link_to "削除", user_path(user), data: { confirm: "削除最終確認" }, method: :delete %></td>
         </tr>
         <% end %>
     <% end %>
