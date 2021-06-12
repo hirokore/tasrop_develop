@@ -3,12 +3,17 @@
   <table>
     <th>表示名</th>
     <th>メルアド</th>
+    <th>管理者権限</th>
     <% @users.each do | user |%>
-      <% unless user.admin? || user == current_user%>
+      <% unless user == current_user%>
         <tr>
           <td><%= user.name%></td>
           <td><%= user.email%></td>
-          <td></td>
+          <% if user.admin? %>
+            <td><%= link_to "解除", edit_user_path(user,role: "user") %></td>
+          <% elsif user.user? %>
+            <td><%= link_to "付与", edit_user_path(user,role: "admin") %></td>
+          <% end %>
         </tr>
         <% end %>
     <% end %>
@@ -29,3 +34,4 @@
     <li><%= render 'follow_form', user: user %></li>
   <% end %>
 <% end %>
+
