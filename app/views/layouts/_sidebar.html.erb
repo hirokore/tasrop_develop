@@ -9,7 +9,11 @@
       <%= sidebar_custom('フォロワー', followed_users_path(current_user)) %>
       <%= sidebar_custom('ユーザー検索', tutorial_tops_path) %>
       <%#= sidebar_custom('メンター機能', current_user) %>
-      <%= sidebar_custom('DM', tutorial_tops_path) %>
+      <% if current_user.admin? %>
+        <%= sidebar_custom('管理者', users_path) %>
+      <% else %>
+        <%= sidebar_custom('DM', users_path) %>
+      <% end %>
     </ul>
   </div>
 </div>

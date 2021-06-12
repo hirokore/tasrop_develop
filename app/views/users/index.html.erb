@@ -1,20 +1,23 @@
-<h1>ユーザー一覧じゃい</h1>
-<br>
-<table>
-  <th>メルアド</th>
-  <% @users.each do | user |%>
-    <% unless user.admin? || user == current_user%>
-      <tr>
-        <td><%= user.email%></td>
-        <td>
-          <%= render 'follow_form', user: user %>
-        </td>
-      </tr>
-      <% end %>
-  <% end %>
-</table>
+<% if current_user.admin? %>
+  <h1>管理者ページ</h1>
+  <table>
+    <th>表示名</th>
+    <th>メルアド</th>
+    <% @users.each do | user |%>
+      <% unless user.admin? || user == current_user%>
+        <tr>
+          <td><%= user.name%></td>
+          <td><%= user.email%></td>
+          <td></td>
+        </tr>
+        <% end %>
+    <% end %>
+  </table>
+<% else %>
+  <h1>DM</h1>
+<% end %>
 
-<h2>ユーザー</h2>
+<h2>相互フォローリスト</h2>
 <% @users.each do |user| %>
   <% if user.id != current_user.id %>
     <li>
@@ -23,6 +26,6 @@
         <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %>
       </div>
     </li>
-    <li><%= render 'follow_form', user: user %></li> <!-- フォロー機能が実装されて入ればこの一文も必要 -->
+    <li><%= render 'follow_form', user: user %></li>
   <% end %>
 <% end %>
