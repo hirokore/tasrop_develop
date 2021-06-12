@@ -27,7 +27,7 @@
 <% end %>
 
 <h2>相互フォローリスト</h2>
-<% @users.each do |user| %>
+<% friend_sort(current_user).each do |user| %>
   <% if user.id != current_user.id %>
     <li>
       <div class="item">

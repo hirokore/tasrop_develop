@@ -7,4 +7,5 @@ module ApplicationHelper
       link_to name, path, class: 'channel_name'
     end
   end
+
 end
