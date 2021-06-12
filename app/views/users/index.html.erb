@@ -29,13 +29,10 @@
 <h2>相互フォローリスト</h2>
 <% friend_sort(current_user).each do |user| %>
   <% if user.id != current_user.id %>
-    <li>
       <div class="item">
-        <%= link_to user.email, user %>
+        <%= link_to user.name, user %>
         <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %>
       </div>
-    </li>
-    <li><%= render 'follow_form', user: user %></li>
   <% end %>
 <% end %>
 

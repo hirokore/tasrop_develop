@@ -6,7 +6,7 @@
   </tr>
   <% @user.followers.each do |followed| %>
     <tr>
-      <td><%= followed.email %></td>
+      <td><%= link_to followed.name, followed %></td>
     </tr>
   <% end %>
 </table>
