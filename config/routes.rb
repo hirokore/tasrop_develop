@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       get 'follow/:id', to: 'users#follow', as: 'follow'
       get 'followed/:id', to: 'users#followed', as: 'followed'
       get 'find', to: 'users#find', as: 'find'
+      get 'result', to: 'users#result', as: 'result'
     end
   end
   mount LetterOpenerWeb::Engine, at: "/mail" if Rails.env.development?

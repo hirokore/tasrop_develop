@@ -1,10 +1,9 @@
-<h1>検索ぺーじ</h1>
-
-<% @users.each do |user| %>
-  <% unless user == current_user%>
-    <div class="item">
-      <%= link_to user.name, user %>
-    </div>
-    <%= render 'follow_form', user: user %>
-  <% end %>
+<h1>ユーザー検索ランサック</h1>
+<%= search_form_for @q, url: result_users_path do |f| %>
+  <%= f.label :name_tag_eq, 'ネームタグ' %>
+  <%= f.search_field :name_tag_eq %>
+  <br>
+  <%= f.submit '検索' %>
+  <p>あなたのネームタグは<%= current_user.name_tag %>です</p>
 <% end %>
+
