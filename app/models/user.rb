@@ -8,11 +8,14 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   
-  # マイタスクカスタマイズ機能
+  # マイタスクカスタマイズ機能との連携
   has_many :customs, dependent: :destroy
 
-  # タスクステータス
+  # タスクステータスとの連携
   has_many :task_statuses, dependent: :destroy
+
+  # タグとの連携
+  has_many :tags, dependent: :destroy
 
   # デバイス関連
   devise :database_authenticatable, :registerable,
