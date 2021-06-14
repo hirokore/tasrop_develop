@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  custom: one
+  name: MyString
+  detail: MyText
+  task_time: 1.5
+  displayed: false
+
+two:
+  user: two
+  custom: two
+  name: MyString
+  detail: MyText
+  task_time: 1.5
+  displayed: false
