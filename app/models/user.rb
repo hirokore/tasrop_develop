@@ -11,6 +11,9 @@ class User < ApplicationRecord
   # マイタスクカスタマイズ機能
   has_many :customs, dependent: :destroy
 
+  # タスクステータス
+  has_many :task_statuses, dependent: :destroy
+
   # デバイス関連
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable,:omniauthable, omniauth_providers: %i(google facebook)
