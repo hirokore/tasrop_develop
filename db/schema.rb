@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_14_035112) do
+ActiveRecord::Schema.define(version: 2021_06_14_040413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,15 @@ ActiveRecord::Schema.define(version: 2021_06_14_035112) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["task_id"], name: "index_taggings_on_task_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", null: false
@@ -127,6 +136,8 @@ ActiveRecord::Schema.define(version: 2021_06_14_035112) do
   add_foreign_key "customs", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "taggings", "tags"
+  add_foreign_key "taggings", "tasks"
   add_foreign_key "tags", "users"
   add_foreign_key "tasks", "customs"
   add_foreign_key "tasks", "users"
