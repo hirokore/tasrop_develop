@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   
+  # マイタスクカスタマイズ機能
+  has_many :customs, dependent: :destroy
+
   # デバイス関連
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable,:omniauthable, omniauth_providers: %i(google facebook)
