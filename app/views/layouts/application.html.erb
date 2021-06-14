@@ -10,7 +10,7 @@
   </head>
   <body>
     <% if user_signed_in? %>
-      <%= link_to "ブログ投稿", blogs_path %>
+      <%= link_to "マイタスク", custom_path(current_user) %>
       <%= link_to "マイページ", current_user %>
       <%= link_to "ご利用ガイド", tutorial_tops_path %>
       <%= link_to "お問い合わせ", new_top_path %>

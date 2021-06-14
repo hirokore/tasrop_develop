@@ -2,9 +2,9 @@
   <div class="listings_channels">
     <h2 class="listings_header">Categories</h2>
     <ul class="channel_list">
-      <%= sidebar_custom('マイタスク', blogs_path) %>
+      <%= sidebar_custom('マイタスク', custom_path(current_user)) %>
       <%= sidebar_custom('マイページ', current_user) %>
-      <%= sidebar_custom('カスタマイズ', tutorial_tops_path) %>
+      <%= sidebar_custom('カスタマイズ', customs_path) %>
       <%= sidebar_custom('フォロー', follow_users_path(current_user)) %>
       <%= sidebar_custom('フォロワー', followed_users_path(current_user)) %>
       <%= sidebar_custom('ユーザー検索', find_users_path) %>
