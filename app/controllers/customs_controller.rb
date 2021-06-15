@@ -5,6 +5,7 @@ class CustomsController < ApplicationController
   
   def create
     @custom = current_user.custom.new(task_params)
+    
   end
 
   def index
