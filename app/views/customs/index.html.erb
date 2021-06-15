@@ -6,26 +6,28 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th><a class="btn btn-primary" >マイタスク一覧</a></th>
+      <th style="text-align:left;"><a class="btn btn-primary" >マイタスク一覧</a></th>
     </tr>
   </thead>
   <tbody>
     <% @customs.each do |custom| %>
-      <tr>
-        <td class="custom_list_name"><%= custom.title.truncate(15) %></td>
-        <td><%= link_to "詳細", custom, class: "btn btn-outline-primary"%></td>
-        <td><%= link_to "編集", edit_custom_path(custom), class: "btn btn-outline-success" %></td>
-        <td><%= link_to "削除", custom, method: :delete, data: { confirm: "本当に消してもいいですか？" }, class: "btn btn-outline-danger" %></td>
-      </tr>
+      <% if custom.displayed %>
+        <tr>
+          <td class="custom_list_name"><%= custom.title.truncate(15) %></td>
+          <td><%= link_to "詳細", custom, class: "btn btn-outline-primary"%></td>
+          <td><%= link_to "編集", edit_custom_path(custom), class: "btn btn-outline-success" %></td>
+          <td><%= link_to "削除", custom, method: :delete, data: { confirm: "本当に消してもいいですか？" }, class: "btn btn-outline-danger" %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
-
+<br>
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <th><a class="btn btn-primary" >タスク一覧</a></th>
+      <th style="text-align:left;"><a class="btn btn-primary" >タスク一覧</a></th>
     </tr>
   </thead>
   <tbody>
@@ -38,12 +40,13 @@
     <% end %>
   </tbody>
 </table>
+<br>
 
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <th><a class="btn btn-primary" >タグ一覧</a></th>
+      <th style="text-align:left;"><a class="btn btn-primary" >タグ一覧</a></th>
     </tr>
   </thead>
   <tbody>
