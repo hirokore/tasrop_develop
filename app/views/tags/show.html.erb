@@ -1,2 +1,8 @@
-<h1>Tags#show</h1>
-<p>Find me in app/views/tags/show.html.erb</p>
+<h1>タスク達成度一覧</h1>
+<% @tags.each do |tag| %>
+  <% if tag.user_id == current_user.id %>
+    <div class=""><%= tag.name %></div>
+    <div class=""><%= tag.total_time %></div>
+  <% end %>
+<% end %>
+  

@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 
 
   def show
+    @tags = Tag.where(user_id: (params[:id]))
   end
 
   def follow

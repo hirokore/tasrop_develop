@@ -14,4 +14,8 @@
 <h3><%= @user.last_target %></h3>
 
 <h2>あなたの達成度</h2>
-<h3><%= "未実装" %></h3>
+<h3>タスク達成度一覧</h3>
+<% @tags.each do |tag| %>
+  <div class=""><%= tag.name %></div>
+  <div class=""><%= tag.total_time %></div>
+<% end %>

@@ -1,7 +1,5 @@
 class TagsController < ApplicationController
-  before_action :set_task, only: [ :show, :edit, :update, :destroy ]
-  def show
-  end
+  before_action :set_task, only: [ :edit, :update, :destroy ]
 
   def edit
   end
