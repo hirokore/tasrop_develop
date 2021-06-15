@@ -9,8 +9,9 @@ class CustomsController < ApplicationController
   end
 
   def index
-    @customs = Custom.all
-    @tags = Tag.all
+    @customs = Custom.where(user_id: current_user.id).includes(:user)
+    @tags = Tag.where(user_id: current_user.id).includes(:user)
+    @tasks = Task.where(user_id: current_user.id).includes(:user)
   end
 
   def show

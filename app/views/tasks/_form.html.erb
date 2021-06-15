@@ -1,0 +1,36 @@
+<%= form_with(model: @task, local: true) do |f| %>
+  <% if @task.errors.any? %>
+    <div class="alert alert-dismissible alert-danger">
+      <h2><%= @task.errors.count %>件のエラー発生中</h2>
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= form_with(model: @task, local: true) do |f| %>
+    <div class="" class="">
+      <label><%= f.label "タスク名" %></label><br>
+      <%= f.text_field :name, size: "30", id: "custom_title",  placeholder: "タスク名を決めよう！" %>
+    </div>
+    <div class="" class="">
+      <label><%= f.label "タスク内容" %></label><br>
+      <%= f.text_field :detail, size: "30", id: "custom_title",  placeholder: "何をすれば達成するかを書こう！" %>
+    </div>
+    <div class="" class="">
+      <label><%= f.label "タスク工数" %></label><br>
+      <%= f.text_field :task_time, size: "30", id: "custom_title",  placeholder: "どれくらいかかるかな？" %>時間
+    </div>
+    <div class="">
+      <label><%= f.label "タグ①" %></label><br>
+      <%= f.text_field :task, size: "30", id: "custom_title",  placeholder: "タグをつけよう！" %>
+    </div><br>
+    <div class="">
+      <%= f.submit "タスク設定" %>
+    </div>  
+  <% end %>
+
+
+<% end %>

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources :tags
-  resources :blogs
+  resources :tasks
   resources :customs
   resources :relationships, only: [:create, :destroy]
   resources :conversations do
