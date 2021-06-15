@@ -1,28 +1,28 @@
-<table>
-  <%= form_with(model: @custom, local: true, url: choose_path(@custom)) do |f| %>
-    <tr>
-      <td><label><%= f.label "マイタスク名" %></label></td>
-      <td><%= f.text_field :title, size: "30", id: "custom_title",  placeholder: "タスクのグループ名を決めよう！" %></td>
-    </tr>
-    <tr>
-      <td><label><%= f.label "タスク①" %></label></td>
-      <td><%= f.text_field :task, size: "30", id: "custom_title",  placeholder: "タスクを選択してね！" %></td>
-    </tr>  
-    <tr>
-      <td><%= f.label "完了時の写真送付機能" %></td>
-      <td><%= f.check_box :use_picture, :as => :boolean%></td>
-    </tr>  
-    <tr>
-      <td><%= f.label "完了時のコメント設定機能" %></td>
-      <td><%= f.check_box :use_comment, :as => :boolean%></td>
-    </tr>  
-    <tr>
-      <td><%= f.label "メンター設定機能" %></td>
-      <td><%= f.check_box :mentor, :as => :boolean%></td>
-      <%# <td><%= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %></td> %>
-    </tr>
-    <tr>
-      <td><%= f.submit "マイタスク設定" %></td>
-    </tr>  
+<div class="">
+  <%= form_with(model: @custom, local: true) do |f| %>
+    <div class="" class="">
+      <label><%= f.label "マイタスク名" %></label>
+      <%= f.text_field :title, size: "30", id: "custom_title",  placeholder: "タスクのグループ名を決めよう！" %>
+    </div>
+    <div class="">
+      <label><%= f.label "タスク①" %></label>
+      <%= f.text_field :task, size: "30", id: "custom_title",  placeholder: "タスクを選択してね！" %>
+    </div>  
+    <div class="">
+      <%= f.label "完了時の写真送付機能" %>
+      <%= f.check_box :use_picture, :as => :boolean%>
+    </div>  
+    <div class="">
+      <%= f.label "完了時のコメント設定機能" %>
+      <%= f.check_box :use_comment, :as => :boolean%>
+    </div>  
+    <div class="">
+      <%= f.label "メンター設定機能" %>
+      <%= f.check_box :mentor, :as => :boolean%>
+      <%# <%= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %> %>
+    </div>
+    <div class="">
+      <%= f.submit "マイタスク設定" %>
+    </div>  
   <% end %>
 </table>

@@ -1,0 +1,11 @@
+<h1>タグ設定ページ</h1>
+<div class="">
+  <%= form_with(model: @tag, local: true) do |f| %>
+    <div class="">
+      <%= f.label "タグ名" %>
+      <%= f.text_field :name, size: "30", id: "custom_title",  placeholder: "例：IT学習、ピアノ、筋トレ等" %>
+    </div>
+    <br>
+    <div class=""><%= f.submit "タグ設定" %>
+  <% end %>
+</div>

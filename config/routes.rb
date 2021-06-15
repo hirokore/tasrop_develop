@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :tags
   resources :blogs
   resources :customs
   resources :relationships, only: [:create, :destroy]
