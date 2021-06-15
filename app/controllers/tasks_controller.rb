@@ -4,6 +4,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @tags = Tag.where(user_id: current_user.id)
   end
 
   def create
@@ -33,6 +34,7 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @tags = Tag.where(user_id: current_user.id)
   end
 
   def destroy
@@ -43,7 +45,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :detail, :task_time, :displayed,tag_ids: [])
+    params.require(:task).permit(:name, :detail, :task_time, :displayed, tag_ids: [])
   end
 
   def set_task

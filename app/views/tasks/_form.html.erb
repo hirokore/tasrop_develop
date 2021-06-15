@@ -24,13 +24,17 @@
       <%= f.text_field :task_time, size: "30", id: "custom_title",  placeholder: "１日どれくらい？" %>時間
     </div>
     <div class="">
-      <label><%= f.label "タグ①" %></label><br>
-      <%= f.text_field :task, size: "30", id: "custom_title",  placeholder: "タグをつけよう！" %>
+      <label><%= f.label "タグ" %></label><br>
+      <% @tags.each do |tag| %>
+        <%= f.check_box :tag_ids, { multiple: true, checked: @task.tag_ids.include?(tag.id), disabled: tag[:disabled], include_hidden: false }, tag[:id] %>
+      <%= f.label :tag_ids, tag.name, value: tag[:id] %>
+    <% end %>  
     </div><br>
     <div class="">
       <%= f.submit "タスク設定" %>
     </div>  
   <% end %>
 
+<%= @task.tag_ids %>
 
 <% end %>
