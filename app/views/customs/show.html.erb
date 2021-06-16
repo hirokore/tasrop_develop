@@ -1,3 +1,27 @@
 <h1>今日の進捗</h1>
 
+<div>
+  <%= "-------進捗具合-------" %>
+</div>
+
+<%= daily_task_max_count %>
+
+
 <h1>マイタスク</h1>
+
+<% @customs.each do |custom| %>
+  <div>
+    <%= "-------進捗具合-------" %>
+  </div>
+  <div>
+    <%= custom.title %>
+  </div>
+  <div>
+    <% custom.task_ids.each do |task_id| %>  
+      <div>
+        <%= Task.find(task_id).name %>
+      </div>
+    <% end %>
+  </div>
+  <br>
+<% end %>

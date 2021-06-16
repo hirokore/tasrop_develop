@@ -5,9 +5,12 @@
       <%= f.text_field :title, size: "30", id: "custom_title",  placeholder: "タスクのグループ名を決めよう！" %>
     </div>
     <div class="">
-      <label><%= f.label "タスク①" %></label>
-      <%= f.text_field :task, size: "30", id: "custom_title",  placeholder: "タスクを選択してね！" %>
-    </div>  
+      <label><%= f.label "タスク" %></label><br>
+      <% @tasks.each do |task| %>
+        <%= f.check_box :task_ids, { multiple: true, checked: @custom.task_ids.include?(task.id), disabled: task[:disabled], include_hidden: false }, task[:id] %>
+      <%= f.label :task_ids, task.name, value: task[:id] %>
+    <% end %>  
+    </div><br>
     <div class="">
       <%= f.label "完了時の写真送付機能" %>
       <%= f.check_box :use_picture, :as => :boolean%>
@@ -16,13 +19,18 @@
       <%= f.label "完了時のコメント設定機能" %>
       <%= f.check_box :use_comment, :as => :boolean%>
     </div>  
-    <div class="">
-      <%= f.label "メンター設定機能" %>
-      <%= f.check_box :mentor, :as => :boolean%>
-      <%# <%= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %> %>
-    </div>
+    <%# <div class=""> %>
+      <%#= f.label "メンター設定機能" %>
+      <%#= f.check_box :mentor, :as => :boolean%>
+      <%# "1:1でやればいい感じに行けそうidsじゃなくてidで行けるidsにするとオプションないから多分無理" <%= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
+    <%# </div> %>
     <div class="">
       <%= f.submit "マイタスク設定" %>
     </div>  
   <% end %>
 </table>
+<br>
+<div class="field" style="padding:0 30px 0 30px;">
+  <%= link_to "戻る", customs_path%>
+</div>
+<br>

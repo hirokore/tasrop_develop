@@ -14,7 +14,6 @@
       <% if custom.displayed %>
         <tr>
           <td class="custom_list_name"><%= custom.title.truncate(15) %></td>
-          <td><%= link_to "詳細", custom, class: "btn btn-outline-primary"%></td>
           <td><%= link_to "編集", edit_custom_path(custom), class: "btn btn-outline-success" %></td>
           <td><%= link_to "削除", custom, method: :delete, data: { confirm: "本当に消してもいいですか？" }, class: "btn btn-outline-danger" %></td>
         </tr>
