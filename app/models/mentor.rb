@@ -1,5 +1,5 @@
 class Mentor < ApplicationRecord
   belongs_to :user
-  # タスクステータス
-  has_many :task_statuses, dependent: :destroy
+  # カスタム
+  # has_many :customs, dependent: :destroy
 end

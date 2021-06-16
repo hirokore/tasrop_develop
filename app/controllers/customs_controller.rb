@@ -9,6 +9,9 @@ class CustomsController < ApplicationController
     @custom = Custom.new(custom_params)
     @custom.user_id = current_user.id
     if @custom.save
+      @custom.task_ids.each do |task_id|
+        Custom.task_status_create(@custom,task_id)
+      end
       redirect_to customs_path, notice: "登録完了"
     else
       render :new
@@ -32,6 +35,7 @@ class CustomsController < ApplicationController
   end
 
   def destroy
+    Custom.custom_release(@custom)
     @custom.destroy
     redirect_to customs_path, notice: "削除完了"
   end
@@ -54,4 +58,8 @@ class CustomsController < ApplicationController
     @custom = Custom.find(params[:id])
   end
 
+  def task_status_params
+    params.require(:task_status).permit(:title, :displayed, :use_comment, :use_picture, :mentor, task_ids: [])
+  end
+  
 end
