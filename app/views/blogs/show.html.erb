@@ -10,17 +10,18 @@
 
 <p>
   <strong>Private:</strong>
+  <%# check_box_tag <ID名>, <送る値>, 元の値, オプション（この中でURLとかメソッドとか、あとAjax使用を明示してる）、基本的にはtrueを送って逆にするだけ %>
     <%= check_box_tag 'blog[private]', true, @blog.private, {
-        onchange: '$(this).data("params", "blog[private]=" + this.checked)',
+        # onchange: '$(this).data("params", "blog[private]=" + this.checked)',
         data: {
             url: blog_url + '/blog_private/',
             method: :post,
             remote: true
         }
     } %>
-  <span id="true_or_false">
-    <%= render :partial => 'private_boolean' %>
-  </span>
+  <%# <span id="true_or_false"> %>
+    <%#= render :partial => 'private_boolean' %>
+  <%# </span> %>
 </p>
 
 <%= link_to 'Edit', edit_blog_path(@blog) %> |

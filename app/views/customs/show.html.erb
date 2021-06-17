@@ -10,21 +10,26 @@
 <h1>マイタスク</h1>
 
 <% @customs.each do |custom| %>
-  <div>
-    <%= "-------進捗具合-------" %>
-  </div>
-  <div>
-    <%= "✅" %>
-    <%= custom.title %>
-  </div>
-  <div>
-    <% custom.task_ids.each do |task_id| %>  
-      <% task = Task.find(task_id) %>
-      <div>
-        <%= "✅" %>
-        <%= task.name %>
-      </div>
-    <% end %>
-  </div>
-  <br>
+  <% unless custom.id == 1 %>
+    <div>
+      <%= "-------進捗具合-------" %>
+    </div>
+    <div>
+      <%= "✅" %>
+      <%= custom.title %>
+    </div>
+    <div>
+      <% custom.task_ids.each do |task_id| %>  
+        <% task = Task.find(task_id) %>
+        <% status = TaskStatus.where(created_at: Time.zone.now.all_day).find_by(task_id: task_id) %>
+        <div>
+          <%= check_box_tag 'task_status[task_status]', true, status.task_status, { data: { url: custom_url(status.id) + '/task_status/', method: :post, remote: true , id: 1}} %>
+          <%= task.name %>
+        </div>
+      <% end %>
+    </div>
+    <br>
+  <% end %>
 <% end %>
+
+<%# if で当日分だけ持ってくる %>

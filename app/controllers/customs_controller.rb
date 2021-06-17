@@ -49,10 +49,12 @@ class CustomsController < ApplicationController
     end
   end
 
+# 
+
   def task_status
     @status = TaskStatus.find(params[:id])
-	  @status.task_status = !@status.task_status
-	  @status.update(task_status_params)
+    @status.task_status = !@status.task_status
+    @status.save
   end
   
   private

@@ -61,9 +61,6 @@ class BlogsController < ApplicationController
   def blog_private
     @blog = Blog.find(params[:id])
     @blog.private = !@blog.private
-    
-    binding.pry
-    
     @blog.save
 	end
 
