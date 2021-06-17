@@ -18,8 +18,9 @@
   </div>
   <div>
     <% custom.task_ids.each do |task_id| %>  
+      <% task = Task.find(task_id) %>
       <div>
-        <%= Task.find(task_id).name %>
+        <%= task.name %>
       </div>
     <% end %>
   </div>
