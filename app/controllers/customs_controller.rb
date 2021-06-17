@@ -55,9 +55,16 @@ class CustomsController < ApplicationController
   def task_status
     @status = TaskStatus.find(params[:id])
     @status.task_status = !@status.task_status
+    @tag = Task.find(@status.task_id).tags
+    if @status.task_status
+      @tag[0].total_time += Task.find(@status.task_id).task_time
+    else
+      @tag[0].total_time -= Task.find(@status.task_id).task_time
+    end
+    @tag[0].save
     @status.save
   end
-  
+  TaskStatus.last.task_id
   private
 
   def custom_params

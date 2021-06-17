@@ -11,11 +11,13 @@
 <%= link_to 'フォロワー', followed_users_path(current_user) %><%= @user.followers.count %>
 
 <h2>いまの最終目標</h2>
-<h3><%= @user.last_target %></h3>
+<div><%= @user.last_target %></div>
 
-<h2>あなたの達成度</h2>
 <h3>タスク達成度一覧</h3>
 <% @tags.each do |tag| %>
   <div class=""><%= tag.name %></div>
   <div class=""><%= tag.total_time %></div>
+  <div class="progress-percentage text-xs-center"><%= tag.total_time %>時間/10000時間</div>
+  <progress class="progress progress-striped" max="10000" value=<%= tag.total_time %>></progress>
+
 <% end %>
