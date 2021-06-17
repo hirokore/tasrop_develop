@@ -64,7 +64,7 @@ class CustomsController < ApplicationController
     @tag[0].save
     @status.save
   end
-  TaskStatus.last.task_id
+
   private
 
   def custom_params

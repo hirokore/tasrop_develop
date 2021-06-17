@@ -4,9 +4,9 @@
   <%= "-------達成度-------" %>
 </div>
 
-<div class="progress-percentage text-xs-center"><%= (daily_task_terminate_count.to_i*100/daily_task_max_count.to_i).floor %>%</div>
-<progress class="progress progress-striped" max="100" value=<%= (daily_task_terminate_count.to_i*100/daily_task_max_count.to_i).floor %>></progress>
-
+<div id=“post”>
+  <%= render :partial => "article" %>
+</div>
 
 <h1>マイタスク</h1>
 
@@ -24,7 +24,7 @@
         <% task = Task.find(task_id) %>
         <% status = TaskStatus.where(created_at: Time.zone.now.all_day).find_by(task_id: task_id) %>
         <div>
-          <%= check_box_tag 'task_status[task_status]', true, status.task_status, { data: { url: custom_url(status.id) + '/task_status/', method: :post, remote: true , id: 1}} %>
+          <%= check_box_tag 'task_status[task_status]', true, status.task_status, { data: { url: custom_url(status.id) + '/task_status/', method: :post, remote: true}} %>
           <%= task.name %>
         </div>
       <% end %>
