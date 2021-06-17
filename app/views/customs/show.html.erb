@@ -14,12 +14,14 @@
     <%= "-------進捗具合-------" %>
   </div>
   <div>
+    <%= "✅" %>
     <%= custom.title %>
   </div>
   <div>
     <% custom.task_ids.each do |task_id| %>  
       <% task = Task.find(task_id) %>
       <div>
+        <%= "✅" %>
         <%= task.name %>
       </div>
     <% end %>

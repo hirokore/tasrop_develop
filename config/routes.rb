@@ -19,9 +19,18 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :blogs do
+    collection do
+      post '/:id/blog_private' => 'blogs#blog_private'
+    end
+  end
   resources :tags
   resources :tasks
-  resources :customs
+  resources :customs do
+    collection do
+      post '/:id/task_status' => 'customs#task_status'
+    end
+  end
   resources :relationships, only: [:create, :destroy]
   resources :conversations do
     resources :messages
