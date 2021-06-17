@@ -1,18 +1,17 @@
 <h1>今日の進捗</h1>
 
 <div>
-  <%= "-------進捗具合-------" %>
+  <%= "-------達成度-------" %>
 </div>
 
-<%= daily_task_max_count %>
-
+<%= (daily_task_terminate_count.to_i*100/daily_task_max_count.to_i).floor %>%
 
 <h1>マイタスク</h1>
 
 <% @customs.each do |custom| %>
   <% unless custom.id == 1 %>
     <div>
-      <%= "-------進捗具合-------" %>
+      <%= "---------------------" %>
     </div>
     <div>
       <%= "✅" %>

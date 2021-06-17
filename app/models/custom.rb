@@ -47,6 +47,15 @@ class Custom < ApplicationRecord
     end
   end
   
+  def self.daily_create(user_id)
+    customs = Custom.where(user_id: user_id)
+    customs.each do |custom|
+      custom.task_ids.each do |task_id|
+        task_status_create(custom,task_id)
+      end
+    end
+  end
+  
 end
 
 # !つけると例外が発生する、なんか困ったら外すか

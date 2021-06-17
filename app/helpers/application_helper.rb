@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def daily_task_max_count
-    max_count = 0
+    max_count = -1
     current_user.customs.each do |custom|
       max_count += custom.task_ids.count
     end
@@ -20,7 +20,7 @@ module ApplicationHelper
     terminate_count = 0
     current_user.customs.each do |custom|
       custom.task_ids.each do |task_id|
-        if TaskStatus.find_by(task_id: task_id)
+        if TaskStatus.where(created_at: Time.zone.now.all_day).find_by(task_id: task_id).task_status == true
           terminate_count += 1
         end
       end

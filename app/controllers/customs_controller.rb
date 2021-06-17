@@ -27,6 +27,7 @@ class CustomsController < ApplicationController
   end
 
   def show
+    Custom.daily_create(params[:id]) unless TaskStatus.find_by(created_at: Time.zone.now.all_day).present?
     @custom = Custom.find_by(user_id: params[:id])
     @customs = Custom.all
   end
