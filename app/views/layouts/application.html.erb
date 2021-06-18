@@ -9,25 +9,27 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <% if user_signed_in? %>
-      <%= link_to "マイタスク", custom_path(current_user) %>
-      <%= link_to "マイページ", current_user %>
-      <%= link_to "ご利用ガイド", tutorial_tops_path %>
-      <%= link_to "お問い合わせ", new_top_path %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
-      <%= link_to "ご利用ガイド", tutorial_tops_path %>
-      <%= link_to "お問い合わせ", new_top_path %>
-    <% end %>
-
-    <% if user_signed_in? %>
-      <div class="col-2">
-        <%= render'layouts/sidebar' %>
-      </div>
-    <% end %>
-
+    <header>
+      <% if user_signed_in? %>
+        <%= link_to "マイタスク", custom_path(current_user) %>
+        <%= link_to "マイページ", current_user %>
+        <%= link_to "ご利用ガイド", tutorial_tops_path %>
+        <%= link_to "お問い合わせ", new_top_path %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "新規登録", new_user_registration_path %>
+        <%= link_to "ログイン", new_user_session_path %>
+        <%= link_to "ご利用ガイド", tutorial_tops_path %>
+        <%= link_to "お問い合わせ", new_top_path %>
+      <% end %>
+    </header>
+    <article>
+      <% if user_signed_in? %>
+        <div class="col-2">
+          <%= render'layouts/sidebar' %>
+        </div>
+      <% end %>
+    </article>
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>
     <% end %>
@@ -35,5 +37,14 @@
       <p class="alert alert-error"><%= alert %></p>
     <% end %>
     <%= yield %>
+    <footer class="small">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center copyright">
+            ©︎ 2021 Tasrop , Inc.
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
