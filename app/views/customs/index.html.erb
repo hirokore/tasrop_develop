@@ -1,3 +1,4 @@
+<h1>カスタマイズページ</h1>
 <%= link_to "マイタスク作成", new_custom_path, class: "btn btn-outline-primary"%>
 <%= link_to "タスク作成", new_task_path, class: "btn btn-outline-primary"%>
 <%= link_to "タグ作成", new_tag_path, class: "btn btn-outline-primary"%>
@@ -31,11 +32,13 @@
   </thead>
   <tbody>
     <% @tasks.each do |task| %>
-      <tr>
-        <td class="custom_list_name"><%= task.name.truncate(15) %></td>
-        <td><%= link_to "編集", edit_task_path(task), class: "btn btn-outline-success" %></td>
-        <td><%= link_to "削除", task, method: :delete, data: { confirm: "本当に消してもいいですか？" }, class: "btn btn-outline-danger" %></td>
-      </tr>
+      <% if task.displayed == true %>
+        <tr>
+          <td class="custom_list_name"><%= task.name.truncate(15) %></td>
+          <td><%= link_to "編集", edit_task_path(task), class: "btn btn-outline-success" %></td>
+          <td><%= link_to "削除", task, method: :delete, data: { confirm: "本当に消してもいいですか？" }, class: "btn btn-outline-danger" %></td>
+        </tr>
+      <% end %>  
     <% end %>
   </tbody>
 </table>

@@ -7,9 +7,11 @@
     <div class="">
       <label><%= f.label "タスク" %></label><br>
       <% @tasks.each do |task| %>
-        <%= f.check_box :task_ids, { multiple: true, checked: @custom.task_ids.include?(task.id), disabled: task[:disabled], include_hidden: false }, task[:id] %>
-      <%= f.label :task_ids, task.name, value: task[:id] %>
-    <% end %>  
+        <% if (@custom.task_ids.include?(task.id) || task.custom_id == 1 || task.custom_id.present? == false) && task.displayed == true %>
+          <%= f.check_box :task_ids, { multiple: true, checked: @custom.task_ids.include?(task.id), disabled: task[:disabled], include_hidden: false }, task[:id] %>
+          <%= f.label :task_ids, task.name, value: task[:id] %>
+        <% end %>  
+      <% end %>  
     </div><br>
     <div class="">
       <%= f.label "完了時の写真送付機能" %>
