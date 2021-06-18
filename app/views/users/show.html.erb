@@ -16,8 +16,7 @@
 <h3>タスク達成度一覧</h3>
 <% @tags.each do |tag| %>
   <div class=""><%= tag.name %></div>
-  <div class=""><%= tag.total_time %></div>
-  <div class="progress-percentage text-xs-center"><%= tag.total_time %>時間/10000時間</div>
-  <progress class="progress progress-striped" max="10000" value=<%= tag.total_time %>></progress>
+  <div class="progress-percentage text-xs-center"><%= tag.total_time %> 時間</div>
+  0 <progress class="progress progress-striped" max="10000" value=<%= tag.total_time %>></progress> 10000
 
 <% end %>
