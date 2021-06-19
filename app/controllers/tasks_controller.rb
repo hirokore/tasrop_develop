@@ -1,7 +1,8 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [ :show, :edit, :update, :destroy ]
   before_action :irregul_operation, only: [ :show, :edit, :update, :destroy ]
-
+  before_action :move_to_signed_in
+  
   def new
     @task = Task.new
     @tags = Tag.where(user_id: current_user.id)

@@ -1,4 +1,5 @@
 class CustomsController < ApplicationController
+  before_action :move_to_signed_in
   before_action :set_custom, only: [ :edit, :update, :destroy ]
 
   def new

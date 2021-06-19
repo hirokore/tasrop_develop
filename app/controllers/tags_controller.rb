@@ -1,6 +1,7 @@
 class TagsController < ApplicationController
   before_action :set_task, only: [ :edit, :update, :destroy ]
-
+  before_action :move_to_signed_in
+  
   def edit
   end
 

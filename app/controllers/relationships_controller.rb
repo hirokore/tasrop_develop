@@ -1,4 +1,5 @@
 class RelationshipsController < ApplicationController
+  before_action :move_to_signed_in
   before_action :authenticate_user!
   respond_to? :js
 
